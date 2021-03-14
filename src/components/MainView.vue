@@ -3,32 +3,49 @@
     <table id="table-content">
       <tr>
         <th>Title</th>
-        <th>Description</th>
         <th>URL</th>
         <th>Language</th>
       </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
+      <tr v-for="repo in repos" :key="repo.id">
+        <td>{{ repo.name }}</td>
         <td>
-          GermanGermanyGermanyGermanyGermanyGermanyGermanyGermanyGermanyGermanyy
+          {{ repo.url }}
         </td>
-        <td>Germany</td>
+        <td>{{ repo.language }}</td>
       </tr>
     </table>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MainView",
+  data() {
+    return {
+      repos: null,
+    };
+  },
+  created() {
+    this.reposFetch();
+  },
+  methods: {
+    async reposFetch() {
+      const response = await axios.get(
+        "https://api.github.com/users/apple890493/repos"
+      );
+      this.repos = response.data;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .main-view {
   background: rgba(255, 255, 255, 0.5);
-  /* width: 800px; */
+  height: 300px;
+  overflow-y: scroll;
 }
 
 #table-content {
