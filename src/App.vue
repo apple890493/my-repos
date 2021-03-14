@@ -4,13 +4,12 @@
       <ParallaxContainer class="first-element">
         <ParallaxContent class="element" :moveFactor="0.6">
           <FirstView />
-          <!-- <h2>{{ tittle }}</h2> -->
         </ParallaxContent>
       </ParallaxContainer>
     </section>
     <section>
       <ParallaxContainer class="second-element">
-        <ParallaxContent class="element" :moveFactor="0">
+        <ParallaxContent :moveFactor="0">
           <MainView />
         </ParallaxContent>
       </ParallaxContainer>
