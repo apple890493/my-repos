@@ -1,28 +1,80 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <section>
+      <ParallaxContainer class="first-element">
+        <ParallaxContent class="element" :moveFactor="0.6">
+          <FirstView />
+          <!-- <h2>{{ tittle }}</h2> -->
+        </ParallaxContent>
+      </ParallaxContainer>
+    </section>
+    <section>
+      <ParallaxContainer class="second-element">
+        <ParallaxContent class="element" :moveFactor="0">
+          <MainView />
+        </ParallaxContent>
+      </ParallaxContainer>
+    </section>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ParallaxContainer from "./components/ParallaxContainer.vue";
+import ParallaxContent from "./components/ParallaxContent.vue";
+import MainView from "./components/MainView.vue";
+import FirstView from "./components/FirstView.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    ParallaxContainer,
+    ParallaxContent,
+    FirstView,
+    MainView,
+  },
+};
 </script>
 
 <style>
+@import "./assets/rest.css";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.first-element {
+  background: url("~@/assets/images/nature.jpg") center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.second-element {
+  /* background: #2b5454;
+  opacity: 0.5; */
+  background: url("~@/assets/images/nature2.jpg") center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+}
+
+h2 {
+  font-size: 60px;
+  padding: 5px 20px;
+  color: #2b5454;
 }
 </style>
