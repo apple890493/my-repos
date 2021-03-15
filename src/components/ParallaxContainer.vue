@@ -17,7 +17,6 @@ export default {
   },
   mounted() {
     this.parallax();
-
     const eventHandler = () => requestAnimationFrame(this.parallax);
     window.addEventListener(`scroll`, eventHandler);
   },
